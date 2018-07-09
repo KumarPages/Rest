@@ -32,10 +32,26 @@ public class GetRequest {
 		
 		String x = txt.asString();	
 	//	System.out.println(x);
-		
 		JsonPath js =new JsonPath(x);
-		String p = js.get("result[0].sys_updated_on");
+		String p = js.get("result[0].number");
 		System.out.println(p);
+		
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("number", ""+js.get("result[0].number"));
+		map.put("sys_updated_on",""+js.get("result[0].sys_updated_on"));
+		map.put("Short Description",""+js.get("result[0].short_description"));
+		map.put("Caller",""+js.get("result[0].caller_id"));
+		map.put("Priority",""+js.get("result[0].priority"));
+		map.put("state",""+js.get("result[0].state"));
+		map.put("assignment_group",""+js.get("result[0].assignment_group"));
+		map.put("category",""+js.get("result[0].category"));
+		map.put("assigned_to",""+js.get("result[0].assigned_to"));
+		map.put("sys_updated_by",""+js.get("result[0].sys_updated_by"));
+		map.put("sys_updated_on",""+js.get("result[0].sys_updated_on"));
+		
+		for (Entry<String, String> eachValue :map.entrySet()) {
+			System.out.println(eachValue.getKey()+" : "+eachValue.getValue());
+		}
 			
 		
 		
